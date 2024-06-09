@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login</title>
+    <!-- Bootstap css -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous" />
+  </head>
+  <body>
+    <div class="container mt-5">
+      <!-- Section: Design Block -->
+      <section class="text-center text-lg-start">
+        <style>
+          .rounded-t-5 {
+            border-top-left-radius: 0.5rem;
+            border-top-right-radius: 0.5rem;
+          }
+
+          @media (min-width: 992px) {
+            .rounded-tr-lg-0 {
+              border-top-right-radius: 0;
+            }
+
+            .rounded-bl-lg-5 {
+              border-bottom-left-radius: 0.5rem;
+            }
+          }
+        </style>
+        <div class="card mb-3">
+          <div class="row g-0 d-flex align-items-center justify-content-center">
+            <div class="text-center text-primary">
+              <h1>L O G I N</h1>
+            </div>
+            <div class="col-4 d-lg-flex">
+              <img src="image/fitri.jpg" alt="Fitriyani" class="w-100 rounded-4 mx-3 mt-3 mt-lg-1" />
+            </div>
+            <div class="col-lg-8">
+              <div class="card-body py-5 px-md-5">
+                <form name="article-form-porofolio-fitri">
+                  <!-- Email input -->
+                  <div data-mdb-input-init class="form-outline mb-4">
+                    <input type="email text" id="form2Example1" class="form-control form-email" />
+                    <label class="form-label" for="form2Example1">Email address</label>
+                  </div>
+
+                  <!-- Password input -->
+                  <div data-mdb-input-init class="form-outline mb-4">
+                    <input type="password" id="form2Example2" class="form-control form-password" />
+                    <label class="form-label" for="form2Example2">Password</label>
+                  </div>
+
+                  <!-- Submit button -->
+                  <button type="submit" data-mdb-button-init data-mdb-ripple-init class="btn btn-primary btn-block mb-4" onclick="login()">Sign in</button>
+
+                  <!-- back button -->
+                  <a href="index.html" type="button" data-mdb-button-init data-mdb-ripple-init class="btn btn-primary btn-block mb-4">Back</a>
+
+                  <label>Rika Pratiwi: </label>
+                  <input type="text" id="input_form" value="30"/>
+                  <!-- <button id="tombol_form">Tampilkan Nilai</button> -->
+
+                  <h2>Hasil: <span id="hasil"></span></h2>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+    <!-- Section: Design Block -->
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+
+    <script>
+      const form = document.forms["article-form-porofolio-fitri"];
+      const formEmail = document.getElementById("input_form").value;
+      const formPassword = document.getElementById("form2Example2").value;
+
+      function login() {
+        form.addEventListener("submit", (e) => {
+          e.preventDefault();
+          document.getElementById("hasil").innerHTML = formEmail;
+
+          // fetch(scriptURL, { method: "POST", body: new FormData(form) })
+          //   .then((response) => {
+          //     //tampilkan tombol kirim hilangkan tombol loading
+          //     btnLoading.classList.toggle("d-none");
+          //     btnKirim.classList.toggle("d-none");
+
+          //     //tampilkan alert
+          //     swal({
+          //       title: "Terimakasih!",
+          //       text: "Pesan berhasil terkirim",
+          //       icon: "success",
+          //       button: true,
+          //     });
+
+          //     //reset form
+          //     form.reset();
+
+          //     console.log("Success!", response);
+          //   })
+          //   .catch((error) => console.error("Error!", error.message));
+        });
+      }
+      //   function login(){
+      //     alert('email anda ' + formEmail) ;
+      //     //   if (formEmail === 'fitriyani@gmail.com')
+      //     //   {
+      //     //     window.location = 'form-article.html';
+      //     //   } else ((error) => console.error("Error!", error.message));
+
+      //   };
+    </script>
+  </body>
+</html>
