@@ -6,6 +6,9 @@
     <title>Login</title>
     <!-- Bootstap css -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous" />
+    <!-- bootstrap icon -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.2/font/bootstrap-icons.min.css" />
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
   </head>
   <body>
     <div class="container mt-5">
@@ -33,34 +36,35 @@
               <h1>L O G I N</h1>
             </div>
             <div class="col-4 d-lg-flex">
-              <img src="image/fitri.jpg" alt="Fitriyani" class="w-100 rounded-4 mx-3 mt-3 mt-lg-1" />
+              <img src="image/fitri.jpg" alt="Fitriyani" class="w-100 rounded-4 mx-3 mt-3 mt-lg-1 mb-2" />
             </div>
             <div class="col-lg-8">
               <div class="card-body py-5 px-md-5">
-                <form name="article-form-porofolio-fitri">
+                <form name="login-form-porofolio-fitri">
                   <!-- Email input -->
-                  <div data-mdb-input-init class="form-outline mb-4">
-                    <input type="email text" id="form2Example1" class="form-control form-email" />
-                    <label class="form-label" for="form2Example1">Email address</label>
-                  </div>
+                  <input type="email" id="form-email" class="form-control" placeholder="Masukkan Email" />
+                  <label class="form-label mb-4">Email</label>
 
                   <!-- Password input -->
-                  <div data-mdb-input-init class="form-outline mb-4">
-                    <input type="password" id="form2Example2" class="form-control form-password" />
-                    <label class="form-label" for="form2Example2">Password</label>
+                  <div class="input-group ipt_pass">
+                    <input type="password" class="form-control form-pass" placeholder="Masukkan Password" id="form-password" />
+                    <input type="text" class="form-control d-none form-pass2" id="form-password2" />
+
+                    <div class="input-group-append">
+                      <span class="input-group-text"
+                        ><a onclick="mataPassword()" type="button" class="btn btn-mata btn-primary"><i class="bi bi-eye d-none"></i><i class="bi bi-eye-slash"></i></a
+                      ></span>
+                    </div>
                   </div>
+                  <label class="form-label mb-4">Password</label>
 
-                  <!-- Submit button -->
-                  <button type="submit" data-mdb-button-init data-mdb-ripple-init class="btn btn-primary btn-block mb-4" onclick="login()">Sign in</button>
+                  <div class="mb-4">
+                    <!-- Submit button -->
+                    <button type="button" class="btn btn-primary btn-block mb-4" onclick="cetak()">Sign in</button>
 
-                  <!-- back button -->
-                  <a href="index.html" type="button" data-mdb-button-init data-mdb-ripple-init class="btn btn-primary btn-block mb-4">Back</a>
-
-                  <label>Rika Pratiwi: </label>
-                  <input type="text" id="input_form" value="30"/>
-                  <!-- <button id="tombol_form">Tampilkan Nilai</button> -->
-
-                  <h2>Hasil: <span id="hasil"></span></h2>
+                    <!-- back button -->
+                    <a href="index.html" type="button" data-mdb-button-init data-mdb-ripple-init class="btn btn-primary btn-block mb-4">Back</a>
+                  </div>
                 </form>
               </div>
             </div>
@@ -73,45 +77,79 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
 
     <script>
-      const form = document.forms["article-form-porofolio-fitri"];
-      const formEmail = document.getElementById("input_form").value;
-      const formPassword = document.getElementById("form2Example2").value;
+      const form = document.forms["login-form-porofolio-fitri"];
+      var formEmail = document.getElementById("form-email");
+      var formPasswordText = document.getElementById("form-password");
+      var formPasswordText2 = document.getElementById("form-password2");
+      var iMata = document.querySelector(".bi-eye");
+      var iMataS = document.querySelector(".bi-eye-slash");
+      var formPassword = document.querySelector(".form-pass");
+      var formPassword2 = document.querySelector(".form-pass2");
 
-      function login() {
-        form.addEventListener("submit", (e) => {
-          e.preventDefault();
-          document.getElementById("hasil").innerHTML = formEmail;
-
-          // fetch(scriptURL, { method: "POST", body: new FormData(form) })
-          //   .then((response) => {
-          //     //tampilkan tombol kirim hilangkan tombol loading
-          //     btnLoading.classList.toggle("d-none");
-          //     btnKirim.classList.toggle("d-none");
-
-          //     //tampilkan alert
-          //     swal({
-          //       title: "Terimakasih!",
-          //       text: "Pesan berhasil terkirim",
-          //       icon: "success",
-          //       button: true,
-          //     });
-
-          //     //reset form
-          //     form.reset();
-
-          //     console.log("Success!", response);
-          //   })
-          //   .catch((error) => console.error("Error!", error.message));
-        });
+      function resetPassword() {
+        iMata.classList.add("d-none");
+        iMataS.classList.remove("d-none");
+        formPassword.classList.remove("d-none");
+        formPassword2.classList.add("d-none");
       }
-      //   function login(){
-      //     alert('email anda ' + formEmail) ;
-      //     //   if (formEmail === 'fitriyani@gmail.com')
-      //     //   {
-      //     //     window.location = 'form-article.html';
-      //     //   } else ((error) => console.error("Error!", error.message));
 
-      //   };
+      function cetak() {
+        if (formEmail.value === "fitriyani@gmail.com" && formPasswordText.value === "123456") { 
+          location.replace("form-article.html");
+        } 
+        else if (formEmail.value === "fitriyani@gmail.com" && formPasswordText2.value === "123456") {
+          location.replace("form-article.html");
+        } 
+        else if ((formEmail.value === "fitriyani@gmail.com" && formPasswordText.value !== "123456") || (formEmail.value === "fitriyani@gmail.com" && formPasswordText2.value !== "123456")) {
+          swal({
+            title: "Password anda salah!",
+            text: "Silahkan Coba Lagi , jika anda perlu bantuan hubungi admin",
+            icon: "error",
+            button: true,
+          });
+          form.reset();
+          resetPassword();
+        } else if (formEmail.value !== "fitriyani@gmail.com" && formPasswordText.value === "123456")  {
+          swal({
+            title: "Email anda salah!",
+            text: "Silahkan Coba Lagi , jika anda perlu bantuan hubungi admin",
+            icon: "error",
+            button: true,
+          });
+          form.reset();
+          resetPassword();
+        } else if ( formEmail.value !== "fitriyani@gmail.com" && formPasswordText2.value === "123456") {
+          swal({
+            title: "Email anda salah!",
+            text: "Silahkan Coba Lagi , jika anda perlu bantuan hubungi admin",
+            icon: "error",
+            button: true,
+          });
+          form.reset();
+          resetPassword();
+        } 
+        else
+          swal({
+            title: "Email dan Password anda salah!",
+            text: "Silahkan Coba Lagi , jika anda perlu bantuan hubungi admin",
+            icon: "error",
+            button: true,
+          });
+        form.reset();
+        resetPassword();
+      }
+
+      function mataPassword() {
+        formPassword.classList.toggle("d-none");
+        formPassword2.classList.toggle("d-none");
+        if (iMataS.classList.toggle("d-none") == true) {
+          iMata.classList.toggle("d-none");
+          formPasswordText2.value = formPasswordText.value;
+        } else {
+          iMata.classList.toggle("d-none");
+          formPasswordText.value = formPasswordText2.value;
+        }
+      }
     </script>
   </body>
 </html>
