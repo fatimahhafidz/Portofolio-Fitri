@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Login</title>
+    <title>Login | Fitriyani Kosasih</title>
     <!-- Bootstap css -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous" />
     <!-- bootstrap icon -->
@@ -94,13 +94,11 @@
       }
 
       function cetak() {
-        if (formEmail.value === "fitriyani@gmail.com" && formPasswordText.value === "123456") { 
+        if (formEmail.value === "fitriyani@gmail.com" && formPasswordText.value === "123456") {
           location.replace("form-article.html");
-        } 
-        else if (formEmail.value === "fitriyani@gmail.com" && formPasswordText2.value === "123456") {
+        } else if (formEmail.value === "fitriyani@gmail.com" && formPasswordText2.value === "123456") {
           location.replace("form-article.html");
-        } 
-        else if ((formEmail.value === "fitriyani@gmail.com" && formPasswordText.value !== "123456") || (formEmail.value === "fitriyani@gmail.com" && formPasswordText2.value !== "123456")) {
+        } else if ((formEmail.value === "fitriyani@gmail.com" && formPasswordText.value !== "123456") || (formEmail.value === "fitriyani@gmail.com" && formPasswordText2.value !== "123456")) {
           swal({
             title: "Password anda salah!",
             text: "Silahkan Coba Lagi , jika anda perlu bantuan hubungi admin",
@@ -109,7 +107,7 @@
           });
           form.reset();
           resetPassword();
-        } else if (formEmail.value !== "fitriyani@gmail.com" && formPasswordText.value === "123456")  {
+        } else if (formEmail.value !== "fitriyani@gmail.com" && formPasswordText.value === "123456") {
           swal({
             title: "Email anda salah!",
             text: "Silahkan Coba Lagi , jika anda perlu bantuan hubungi admin",
@@ -118,7 +116,7 @@
           });
           form.reset();
           resetPassword();
-        } else if ( formEmail.value !== "fitriyani@gmail.com" && formPasswordText2.value === "123456") {
+        } else if (formEmail.value !== "fitriyani@gmail.com" && formPasswordText2.value === "123456") {
           swal({
             title: "Email anda salah!",
             text: "Silahkan Coba Lagi , jika anda perlu bantuan hubungi admin",
@@ -127,8 +125,7 @@
           });
           form.reset();
           resetPassword();
-        } 
-        else
+        } else
           swal({
             title: "Email dan Password anda salah!",
             text: "Silahkan Coba Lagi , jika anda perlu bantuan hubungi admin",
